@@ -1,8 +1,11 @@
 <template>
-  <div :class="['page', $style.favorites]">
-    <div v-if="haveFavorites" :class="$style.list">
-      <CatalogItem v-for="item in favorites" :key="item.id" :data="item" />
+  <div class="page">
+    <div v-if="haveFavorites" class="container">
+      <div :class="$style.list">
+        <CatalogItem v-for="item in favorites" :key="item.id" :data="item" />
+      </div>
     </div>
+
     <EmptyTextBlock
       v-else
       text="В Избранном пока ничего нет"
@@ -33,10 +36,16 @@ export default {
 </script>
 
 <style module>
+.container {
+  padding: 25px;
+  background-color: var(--white);
+  min-height: calc(100vh - 64px);
+}
 .list {
   grid-gap: 1px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
+  background-color: var(--white);
 }
 .empty {
   width: 100%;

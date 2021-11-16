@@ -8,6 +8,7 @@ const colors = {
   black: '#000',
   error: '#ff6161',
   grayLighten: '#eff3f6',
+  grayVeryLighten: '#F5F6F8',
   green: '#10ad44',
 };
 

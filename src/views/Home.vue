@@ -1,17 +1,19 @@
 <template>
-  <div :class="['page', $style.home]">
-    <div v-if="isShowProductList" :class="$style.list">
-      <template v-if="!isProductsLoading">
-        <CatalogItem v-for="item in products" :key="item.id" :data="item" />
-      </template>
+  <div class="page">
+    <div v-if="isShowProductList" class="container">
+      <div :class="$style.list">
+        <template v-if="!isProductsLoading">
+          <CatalogItem v-for="item in products" :key="item.id" :data="item" />
+        </template>
 
-      <template v-else>
-        <ListItemSkeleton
-          v-for="n in 12"
-          :key="n"
-          :class="$style['list-item-skeleton']"
-        />
-      </template>
+        <template v-else>
+          <ListItemSkeleton
+            v-for="n in 12"
+            :key="n"
+            :class="$style['list-item-skeleton']"
+          />
+        </template>
+      </div>
     </div>
 
     <EmptyTextBlock
@@ -44,10 +46,6 @@ export default {
 </script>
 
 <style module>
-.home {
-  background-color: var(--white);
-  padding-top: 20px;
-}
 .list {
   grid-gap: 1px;
   display: grid;

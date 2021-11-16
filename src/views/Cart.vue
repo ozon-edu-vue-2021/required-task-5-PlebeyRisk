@@ -1,6 +1,6 @@
 <template>
-  <div :class="['page', $style.cart]">
-    <template v-if="haveItems">
+  <div class="page">
+    <div v-if="haveItems" :class="['container', $style.container]">
       <div :class="$style.block">
         <List
           :items="cart"
@@ -35,7 +35,7 @@
           </div>
         </div>
       </div>
-    </template>
+    </div>
 
     <EmptyTextBlock
       v-else
@@ -107,11 +107,11 @@ export default {
 </script>
 
 <style module>
-.cart {
-  width: 100%;
+.container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  background-color: inherit;
 }
 .block {
   flex: 0 0 calc(66.6666% - 24px);
