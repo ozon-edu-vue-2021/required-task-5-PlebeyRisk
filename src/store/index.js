@@ -160,10 +160,6 @@ export default new Vuex.Store({
           deleteDuplicates((await response?.json()) || [])
         );
 
-        products.slice(0, 5).forEach((item) => {
-          commit('addCart', item?.id);
-        });
-
         commit('setProducts', products || []);
       } catch (error) {
         errorHandler(error);
