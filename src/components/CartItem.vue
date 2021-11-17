@@ -34,6 +34,7 @@
             >{{ favoriteButtonText }}</MyButton
           >
         </div>
+
         <div :class="$style['action-wrapper']">
           <MyButton :class="$style.action" onlyText @click="onItemDeleteClick"
             >Удалить</MyButton

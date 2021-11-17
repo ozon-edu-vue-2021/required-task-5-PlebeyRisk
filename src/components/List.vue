@@ -18,6 +18,7 @@
                 Выбрать все
               </label>
             </div>
+
             <div
               v-if="selectedItemsIds.length"
               :class="[
@@ -36,9 +37,14 @@
           </div>
         </slot>
       </div>
+
       <div v-if="haveItems" :class="$style['item-list']">
         <template v-if="$scopedSlots.item">
-          <div v-for="(item, index) in items" :key="item.id" :class="$style.item">
+          <div
+            v-for="(item, index) in items"
+            :key="item.id"
+            :class="$style.item"
+          >
             <slot
               name="item"
               v-bind="{
@@ -104,8 +110,13 @@ export default {
     selectItem(item) {
       const itemId = item?.[this.itemKey];
 
-      if (itemId === undefined || itemId === null || this.isItemSelected(item))
+      if (
+        itemId === undefined ||
+        itemId === null ||
+        this.isItemSelected(item)
+      ) {
         return;
+      }
 
       this.selectedItemsIds = [...this.selectedItemsIds, itemId];
 
@@ -116,6 +127,7 @@ export default {
         this.unselectItem(item);
         return;
       }
+
       this.selectItem(item);
     },
     emitChanges() {
@@ -125,6 +137,7 @@ export default {
       this.selectedItemsIds = this.selectedItemsIds.filter(
         (id) => id !== item?.[this.itemKey]
       );
+
       this.emitChanges();
     },
     isItemSelected(item) {

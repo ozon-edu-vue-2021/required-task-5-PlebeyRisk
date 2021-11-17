@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.empty">
     {{ $attrs.text }}
+
     <span :class="$style['empty-description']">{{ $attrs.description }}</span>
   </div>
 </template>

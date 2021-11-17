@@ -6,6 +6,7 @@
       :bgColor="color"
       :color="textColor"
     />
+
     <span :class="$style.content">
       <slot></slot>
     </span>

@@ -1,4 +1,4 @@
-import { notifyError } from "../error";
+import { notifyError } from '../error';
 
 export default {
   install(Vue) {

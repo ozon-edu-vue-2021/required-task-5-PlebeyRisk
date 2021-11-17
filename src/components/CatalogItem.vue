@@ -3,6 +3,7 @@
     <div :class="$style['favorite-icon']" @click="onFavoriteClick">
       <Icon :name="favoriteIconName" :color="favoriteIconColor" />
     </div>
+
     <div :class="$style['image-wrapper']">
       <img
         :class="$style.image"
@@ -10,6 +11,7 @@
         :alt="data.dish"
       />
     </div>
+
     <div :class="$style.content">
       <span :class="$style.cost">
         {{ data.cost }}
@@ -94,6 +96,7 @@ export default {
         this.deleteFromCart(this.data?.id);
         return;
       }
+
       this.setProductCountInCart({ productId: this.data?.id, count: val });
     },
   },

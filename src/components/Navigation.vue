@@ -3,11 +3,12 @@
     <div
       v-for="item in items"
       :key="item.id"
-      :class="[$style.item, {[$style['with-counter']]: item.count}]"
+      :class="[$style.item, { [$style['with-counter']]: item.count }]"
     >
       <div v-if="item.count" :class="$style.counter">
         {{ getCutNumber(item.count) }}
       </div>
+
       <router-link
         :to="item.path"
         :class="$style.link"
@@ -30,12 +31,15 @@ export default {
   methods: {
     getCutNumber(val) {
       const number = Number(val);
+
       if (number > 99) {
         return '99+';
       }
+
       if (number < 0) {
         return '0';
       }
+
       return String(val);
     },
   },

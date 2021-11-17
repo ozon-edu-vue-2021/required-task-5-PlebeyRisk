@@ -36,6 +36,7 @@ export default new Vuex.Store({
         const foundProduct = state.products.find(
           (item) => item?.id === cartProduct?.id
         );
+
         return acc + (foundProduct?.cost || 0) * (cartProduct?.count || 0);
       }, 0);
     },
@@ -44,6 +45,7 @@ export default new Vuex.Store({
         const foundProduct = state.products.find(
           (item) => item?.id === cartProduct?.id
         );
+
         return foundProduct
           ? [...acc, { ...foundProduct, ...cartProduct }]
           : acc;
@@ -57,7 +59,9 @@ export default new Vuex.Store({
       );
 
       const foundProduct = state.products?.[foundProductIndex];
-      if (foundProduct?.isFavorite) return;
+      if (foundProduct?.isFavorite) {
+        return;
+      }
 
       Vue.set(state.products, foundProductIndex, {
         ...foundProduct,
@@ -70,7 +74,9 @@ export default new Vuex.Store({
       );
 
       const foundProduct = state.products?.[foundProductIndex];
-      if (!foundProduct?.isFavorite) return;
+      if (!foundProduct?.isFavorite) {
+        return;
+      }
 
       Vue.set(state.products, foundProductIndex, {
         ...foundProduct,
@@ -79,13 +85,18 @@ export default new Vuex.Store({
     },
     setProductCountInCart: (state, payload = {}) => {
       const { productId, count } = payload;
-      if (!productId || !count) return;
+
+      if (!productId || !count) {
+        return;
+      }
 
       const foundProductIndex = state.cartProducts.findIndex(
         (item) => item?.id === productId
       );
 
-      if (foundProductIndex < 0) return;
+      if (foundProductIndex < 0) {
+        return;
+      }
 
       Vue.set(state.cartProducts, foundProductIndex, {
         ...state.cartProducts?.[foundProductIndex],
@@ -99,7 +110,10 @@ export default new Vuex.Store({
       }));
     },
     addCart: (state, productId) => {
-      if (state.cartProducts.some((item) => item?.id === productId)) return;
+      if (state.cartProducts.some((item) => item?.id === productId)) {
+        return;
+      }
+
       state.cartProducts.unshift({
         id: productId,
         count: 1,
@@ -114,6 +128,7 @@ export default new Vuex.Store({
         );
         return;
       }
+
       state.cartProducts = state.cartProducts.filter(
         (item) => item?.id !== payload
       );
@@ -133,10 +148,12 @@ export default new Vuex.Store({
       const foundProduct = state.products.find(
         (item) => item?.id === productId
       );
+
       if (foundProduct?.isFavorite) {
         commit('deleteFromFavorites', productId);
         return;
       }
+
       commit('addFavorite', productId);
     },
     loadProducts: async ({ commit }, { size = 30 } = {}) => {

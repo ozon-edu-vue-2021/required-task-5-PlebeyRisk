@@ -6,7 +6,9 @@
     >
       <Icon name="remove" v-bind="btnOptions" />
     </MyButton>
+
     <span :class="$style.number">{{ inputValue }} шт.</span>
+
     <MyButton
       :class="[$style.button, $style['btn-increase']]"
       @click="increaseNumber"
@@ -73,16 +75,20 @@ export default {
       if (val > this.max) {
         return this.max;
       }
+
       if (val < this.min) {
         return this.min;
       }
+
       return val;
     },
     setValue(val, needEmit = true) {
       const newValue = this.getCheckedValue(val);
+
       if (needEmit && newValue !== this.inputValue) {
         this.$emit('input', newValue);
       }
+
       this.inputValue = newValue;
     },
     increaseNumber() {
@@ -126,7 +132,7 @@ export default {
   pointer-events: none;
 }
 
-.counter-input.max .btn-increase{
+.counter-input.max .btn-increase {
   opacity: 0.5;
   pointer-events: none;
 }

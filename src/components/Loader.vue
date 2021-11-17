@@ -17,6 +17,7 @@ export default {
       const background = this.color
         ? `linear-gradient(to right, ${this.color} 10%, rgb(255, 255, 255, 0) 42%)`
         : undefined;
+
       return {
         background,
       };

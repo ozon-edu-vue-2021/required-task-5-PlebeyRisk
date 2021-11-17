@@ -1,9 +1,9 @@
 module.exports = {
   plugins: [
-    require("postcss-cssnext")({
+    require('postcss-cssnext')({
       features: {
         customProperties: {
-          variables: require("./src/constants/colors.js"),
+          variables: require('./src/constants/colors.js'),
         },
       },
     }),
